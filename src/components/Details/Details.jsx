@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 function Details() {
 
     const dispatch = useDispatch();
-    const movies = useSelector(store => store.movies);
-
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
-    }, []);
+    const selectedMovie = useSelector(store => store.selectedMovie);
 
     return (
         <main>
-            <p>Details Page!</p>
+            {selectedMovie ? (<div key={selectedMovie.id} >
+            <h3>{selectedMovie.title}</h3>
+            <img src={selectedMovie.poster} alt={selectedMovie.title} />
+            <p>{selectedMovie.description}</p>
+        </div>) : (<div>Loading</div>)}
         </main>
     );
 }

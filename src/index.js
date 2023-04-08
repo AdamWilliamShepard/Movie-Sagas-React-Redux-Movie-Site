@@ -36,7 +36,7 @@ function* fetchSingleMovieDetail(action){
     try {
         const getSingleMovie = yield axios.get(`/api/movie/${action.payload}`)
         console.log(getSingleMovie)
-        yield put({type: 'SET_SELECTED_MOVIE', payload: getSingleMovie.data })
+        yield put({type: 'SET_SELECTED_MOVIE', payload: getSingleMovie.data[0] })
     } catch (error) {
         console.log('Error in fetchSingleMovie generator', error)
     }
@@ -67,10 +67,12 @@ const genres = (state = [], action) => {
 }
 
 //Reducer used to store the selected movie
-const selectedMovie = (state = '', action) => {
+const selectedMovie = (state = {}, action) => {
     switch (action.type) {
         case 'SET_SELECTED_MOVIE':
             return action.payload;
+        case 'SHOW_SELECTED_MOVIE':
+            return state
         default:
             return state;
     }

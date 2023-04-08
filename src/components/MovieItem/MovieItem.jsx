@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 function MovieItem({ movie }) {
 
     const dispatch = useDispatch();
-    // const movies = useSelector(store => store.movies);
     const history=useHistory()
 
     const showDescription = () => {
@@ -13,7 +12,7 @@ function MovieItem({ movie }) {
             type: "FETCH_SINGLE_MOVIE",
             payload: movie.id
         })
-        // history.push('/details')
+        history.push('/details')
     }
 
     return (
