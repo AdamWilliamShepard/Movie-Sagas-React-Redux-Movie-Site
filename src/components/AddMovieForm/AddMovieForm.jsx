@@ -22,6 +22,13 @@ function AddMovieForm() {
         })
     }
 
+    const handleSelectChange = (event) => {
+        setMovieToAdd({
+            ...movieToAdd,
+            genre_id: event.target.value,
+        })
+    }
+
     const addMovie = (movieToAdd) => {
         console.log('Inside of addMovie function. Here is movieToAdd:', movieToAdd)
         if (movieToAdd.title === ''|| movieToAdd.poster === '' || movieToAdd.description === '') {
@@ -33,7 +40,6 @@ function AddMovieForm() {
                 payload: movieToAdd
             })
         }
-
     }
 
     return (
@@ -62,8 +68,8 @@ function AddMovieForm() {
                 />
                 <select
                     id="genres"
-                    name="genres_id"
-                    onChange={handleInputChange}
+                    name="genre_id"
+                    onChange={handleSelectChange}
                     value={movieToAdd.genre_id}>
                     {genres.map((genre) => (
                         <option key={genre.id} value={genre.id}>
