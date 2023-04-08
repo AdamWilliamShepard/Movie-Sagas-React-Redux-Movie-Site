@@ -12,7 +12,7 @@ function Details() {
 
     return (
         <main>
-            
+            <p>Details Page!</p>
         </main>
     );
 }
