@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function AddMovieForm() {
 
     const dispatch = useDispatch();
     const genres = useSelector(store => store.genres);
+    const history = useHistory()
 
     let [movieToAdd, setMovieToAdd] = useState({ title: '', poster: '', description: '', genre_id: '' })
 
@@ -13,6 +15,10 @@ function AddMovieForm() {
         dispatch({ type: 'FETCH_MOVIES' });
         dispatch({ type: 'FETCH_GENRES' })
     }, []);
+
+    const back = () => {
+        history.push('/')
+    }
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -78,8 +84,9 @@ function AddMovieForm() {
                     ))}
                 </select>
 
-                <button type='submit'>Submit</button>
+                <button type='submit'>Save</button>
             </form>
+            <button onClick={back}>Cancel</button>
         </main>
     );
 }
