@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_SINGLE_MOVIE', fetchSingleMovieDetail)
+    yield takeEvery('FETCH_GENRES', fetchGenres)
 }
 
 function* fetchAllMovies() {
@@ -47,7 +48,7 @@ function* fetchGenres(action){
     console.log('In fetchGenres', action)
     try {
         const getGenres = yield axios.get(`/api/genre`)
-        console.log(getSingleMovie)
+        console.log(getGenres)
         yield put({type: 'SET_GENRES', payload: getGenres.data })
     } catch (error) {
         console.log('Error in fetchGenres generator', error)

@@ -10,7 +10,7 @@ function MovieList() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
-        dispatch({type: ''})
+        dispatch({type: 'FETCH_GENRES'})
     }, []);
 
     return (
