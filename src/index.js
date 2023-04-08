@@ -40,7 +40,18 @@ function* fetchSingleMovieDetail(action){
     } catch (error) {
         console.log('Error in fetchSingleMovie generator', error)
     }
+}
 
+function* fetchGenres(action){
+    //get selected movie from the db
+    console.log('In fetchGenres', action)
+    try {
+        const getGenres = yield axios.get(`/api/genre`)
+        console.log(getSingleMovie)
+        yield put({type: 'SET_GENRES', payload: getGenres.data })
+    } catch (error) {
+        console.log('Error in fetchGenres generator', error)
+    }
 }
 
 // Create sagaMiddleware
