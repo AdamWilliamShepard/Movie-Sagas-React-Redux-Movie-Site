@@ -38,6 +38,8 @@ function AddMovieForm() {
         });
     }
 
+    
+
     return (
         <main>
             <form onSubmit={(event) => addMovie(event)}>
