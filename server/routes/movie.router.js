@@ -72,6 +72,26 @@ router.post('/', (req, res) => {
       console.log(err);
       res.sendStatus(500)
     })
+
+
+})
+
+router.put('/:id', (req, res) => {
+  console.log('this is req.params', req.params)
+  selectedId = req.params.id;
+  selectedEdit = req.body;
+  const queryText = `UPDATE "movies" 
+  SET "title" = $1, "description" = $2
+  WHERE "id" = $3;`
+  pool.query(queryText, [selectedEdit.title, selectedEdit.description, selectedId])
+    .then((result) => {
+      console.log('Successful PUT request for editing movie')
+      res.sendStatus(200)
+    })
+    .catch((error) => {
+      console.log('Error making database query- Edit Movie', error)
+      res.sendStatus(500)
+    })
 })
 
 module.exports = router;
