@@ -42,7 +42,7 @@ function MovieItem({ movie }) {
                 title={movie.title}
                 onClick={showDescription}
             />
-            <CardContent sx={{ width: '100%' }}>
+            <CardContent sx={{ width: '100%'}}>
                 <form onSubmit=''>
                     <Typography gutterBottom variant="h5" component="div">
                         {movie.title}

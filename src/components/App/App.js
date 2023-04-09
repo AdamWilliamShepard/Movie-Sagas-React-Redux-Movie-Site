@@ -4,16 +4,14 @@ import MovieList from '../MovieList/MovieList'
 import Details from '../Details/Details';
 import AddMovieForm from '../AddMovieForm/AddMovieForm';
 import EditMovie from '../EditMovie/EditMovie';
+import MiniDrawer from '../Drawer/MiniDrawer';
 
 function App() {
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
       <Router>
-        <Link to="/"> Home</Link>
-        <Link to="/details"> Details</Link>
-        <Link to="/addmovie"> Add Movie</Link>
-        <Link to="/editmovie"> Edit Movie</Link>
+        <MiniDrawer />
 
         {/* Home Page */}
         <Route path="/" exact component={MovieList} />
