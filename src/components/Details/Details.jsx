@@ -17,12 +17,17 @@ function Details() {
         history.push('/')
     }
 
+    const editMovie = () => {
+        history.push(`/editmovie/${selectedMovie.id}`)
+    }
+
     return (
         <main>
             {selectedMovie ? (
                 <div key={selectedMovie.id} >
                     <h3>{selectedMovie.title}</h3>
                     <img src={selectedMovie.poster} alt={selectedMovie.title} />
+                    <button onClick={editMovie}>Edit Movie</button>
                     <h4>Genres: {selectedMovie.genres}</h4>
                     <p>{selectedMovie.description}</p>
                 </div>

@@ -25,7 +25,7 @@ function App() {
         <Route path="/addmovie" component={AddMovieForm} />
 
         {/* Edit Movie page */}
-        <Route path="/editmovie" component={EditMovie} />
+        <Route path="/editmovie/:id" component={EditMovie} />
 
       </Router>
     </div>

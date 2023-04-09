@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 function EditMovie() {
 
+    const { id } = useParams();
+    const selectedMovie = useSelector(store => store.selectedMovie);
     const dispatch = useDispatch();
     const history = useHistory()
 
-    let [movieToAdd, setMovieToAdd] = useState({ title: '', description: '' })
+    let [movieEdit, setMovieEdit] = useState({ title: '', description: '', id: '' })
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -21,34 +24,45 @@ function EditMovie() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setMovieToAdd({
-            ...movieToAdd,
+        setMovieEdit({
+            ...movieEdit,
             [name]: value,
+            id: id
         })
     }
 
-    const addMovie = (movieToAdd) => {
-        console.log('Inside of addMovie function. Here is movieToAdd:', movieToAdd)
-        if (movieToAdd.title === '' && movieToAdd.description === '') {
+    const editMovie = (movieEdit) => {
+        console.log('Inside of addMovie function. Here is movieToAdd:', movieEdit)
+        if (movieEdit.title === '' && movieEdit.description === '') {
             alert('You must complete at least one input field')
         }
         else {
             dispatch({
-                type: 'ADD_NEW_MOVIE',
-                payload: movieToAdd
+                type: 'MODIFY_MOVIE',
+                payload: movieEdit
             })
         }
     }
 
     return (
         <main>
-            <form onSubmit={(event) => addMovie(movieToAdd)}>
+            {selectedMovie ? (
+                <div key={selectedMovie.id} >
+                    <h3>{selectedMovie.title}</h3>
+                    <img src={selectedMovie.poster} alt={selectedMovie.title} />
+                    <h4>Genres: {selectedMovie.genres}</h4>
+                    <p>{selectedMovie.description}</p>
+                </div>
+            ) : (<div>Loading</div>)}
+            <button onClick={back}>Back to Home</button>
+
+            <form onSubmit={(event) => editMovie(movieEdit)}>
                 <input
                     onChange={handleInputChange}
                     type='text'
                     placeholder='title'
                     name='title'
-                    value={movieToAdd.title}
+                    value={movieEdit.title}
                 />
 
                 <input
@@ -56,9 +70,9 @@ function EditMovie() {
                     type='text'
                     placeholder='description'
                     name='description'
-                    value={movieToAdd.description}
+                    value={movieEdit.description}
                 />
-               
+
 
                 <button type='submit'>Save</button>
             </form>
