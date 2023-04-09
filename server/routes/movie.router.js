@@ -84,14 +84,14 @@ router.put('/:id', (req, res) => {
   SET "title" = $1, "description" = $2
   WHERE "id" = $3;`
   pool.query(queryText, [selectedEdit.title, selectedEdit.description, selectedId])
-  .then( (result) => {
-    console.log('Successful PUT request for editing movie')
-    res.sendStatus(200)
-  })
-  .catch((error) => {
-    console.log('Error making database query- Edit Movie', error)
-    res.sendStatus(500)
-  })
+    .then((result) => {
+      console.log('Successful PUT request for editing movie')
+      res.sendStatus(200)
+    })
+    .catch((error) => {
+      console.log('Error making database query- Edit Movie', error)
+      res.sendStatus(500)
+    })
 })
 
 module.exports = router;

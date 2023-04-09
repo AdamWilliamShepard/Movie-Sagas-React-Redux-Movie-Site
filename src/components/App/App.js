@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <h1>The Movies Saga!</h1>
       <Router>
-          <Link to="/"> Home</Link>
-          <Link to="/details"> Details</Link>
-          <Link to="/addmovie"> Add Movie</Link>
-          <Link to="/editmovie"> Edit Movie</Link>
+        <Link to="/"> Home</Link>
+        <Link to="/details"> Details</Link>
+        <Link to="/addmovie"> Add Movie</Link>
+        <Link to="/editmovie"> Edit Movie</Link>
 
         {/* Home Page */}
         <Route path="/" exact component={MovieList} />
