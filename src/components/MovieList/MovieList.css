@@ -1,4 +1,41 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flex-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-grid .col {
+  flex: 1;
+}
+
+.flex-grid-quarters {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-grid-quarters .col {
+  width: 20%;
+  margin: 5px;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 5px;
+}
+.flex-grid { 
+  margin: 0 0 20px 0;
+}
+.col {
+  background: rgb(180, 174, 174);
+  padding: 10px;
+  border: 1px solid black;
+  
 }
