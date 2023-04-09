@@ -14,7 +14,6 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
             <div class="flex-grid-quarters">
                 <section className="movies">
                     {movies.map((movie, i) => {
