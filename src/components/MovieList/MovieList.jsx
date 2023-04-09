@@ -14,12 +14,16 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
-            <section className="movies">
-                {movies.map((movie, i) => {
-                    return <MovieItem key={i} movie={movie} />
-                })}
-            </section>
+            <div class="flex-grid-quarters">
+                <section className="movies">
+                    {movies.map((movie, i) => {
+                        return (
+                            <div class="col">
+                                <MovieItem key={i} movie={movie} />
+                            </div>)
+                    })}
+                </section>
+            </div>
         </main>
 
     );
