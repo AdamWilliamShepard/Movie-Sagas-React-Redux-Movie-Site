@@ -35,22 +35,10 @@ function Details() {
 
     return (
         <>
-            {/* <main>
-                {selectedMovie ? (
-                    <div key={selectedMovie.id} >
-                        <h3>{selectedMovie.title}</h3>
-                        <img src={selectedMovie.poster} alt={selectedMovie.title} />
-
-                        <h4>Genres: {selectedMovie.genres}</h4>
-                        <p>{selectedMovie.description}</p>
-                    </div>
-                ) : (<div>Loading</div>)}
-
-            </main> */}
             <div class="flex-grid">
-                <div class="col">
                     {selectedMovie ? (
-                        <Card sx={{
+                        <Card className='col'
+                        sx={{
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'center',
@@ -84,7 +72,6 @@ function Details() {
                                 <Button size="small" variant="contained" onClick={back}>Back to Home</Button>
                             </CardActions>
                         </Card>) : (<div>Loading</div>)}
-                </div>
             </div>
         </>
     );

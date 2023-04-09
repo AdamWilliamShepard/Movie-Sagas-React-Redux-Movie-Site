@@ -1,0 +1,9 @@
+  .oversizedInput {
+    line-height: 8em;
+  }
+
+.btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+} 
