@@ -42,6 +42,7 @@ function EditMovie() {
                 payload: movieEdit
             })
         }
+        history.push('/')
     }
 
     return (
