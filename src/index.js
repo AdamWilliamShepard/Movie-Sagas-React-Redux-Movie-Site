@@ -10,6 +10,9 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
+import movies from './redux/reducers/movies.reducer';
+import genres from './redux/reducers/genres.reducer';
+import selectedMovie from './redux/reducers/selectedMovie.reducer';
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -79,38 +82,6 @@ function* modifyMovie(action) {
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
-
-// Used to store movies returned from the server
-const movies = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_MOVIES':
-            return action.payload;
-        default:
-            return state;
-    }
-}
-
-// Used to store the movie genres
-const genres = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_GENRES':
-            return action.payload;
-        default:
-            return state;
-    }
-}
-
-//Reducer used to store the selected movie
-const selectedMovie = (state = '', action) => {
-    switch (action.type) {
-        case 'SET_SELECTED_MOVIE':
-            return action.payload;
-        case 'SHOW_SELECTED_MOVIE':
-            return state
-        default:
-            return state;
-    }
-}
 
 // Create one store that all components can use
 const storeInstance = createStore(
