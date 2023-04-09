@@ -8,7 +8,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { alignProperty } from '@mui/material/styles/cssUtils';
 
 
 function MovieItem({ movie }) {
@@ -27,7 +26,7 @@ function MovieItem({ movie }) {
     return (<>
         <Card sx={{
             maxWidth: 500,
-            backgroundColor: 'rgba(32, 119, 212, 0.3)',
+            backgroundColor: 'rgba(255, 255, 255, 0.3)',
             cursor: 'grab',
             transition: 'all 0.2s ease-in-out',
             '&:hover': {
@@ -50,10 +49,8 @@ function MovieItem({ movie }) {
                 </form>
             </CardContent>
             <CardActions sx={{ justifyContent: "center" }}>
-
             </CardActions>
         </Card>
-
     </>
     );
 }

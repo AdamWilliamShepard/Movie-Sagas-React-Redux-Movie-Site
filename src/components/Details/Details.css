@@ -1,0 +1,26 @@
+.flex-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-grid .col {
+  flex: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 5px;
+}
+.flex-grid { 
+  margin: 0 0 20px 0;
+}
+.col {
+  padding: 10px;
+  margin-right: 100px;
+  margin-left: 100px;
+  border: 1px solid black;
+  
+}

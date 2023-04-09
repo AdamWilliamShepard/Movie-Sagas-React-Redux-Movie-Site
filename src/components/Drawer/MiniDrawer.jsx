@@ -106,11 +106,7 @@ export default function MiniDrawer() {
       icon: <CircleIcon />,
       onClick: () => history.push('/')
     },
-    {
-      text: 'Details',
-      icon: <CircleIcon />,
-      onClick: () => history.push('/details')
-    },
+
     {
       text: 'Add Movie',
       icon: <CircleIcon />,
@@ -136,13 +132,14 @@ export default function MiniDrawer() {
             sx={{
               marginRight: 5,
               ...(open && { display: 'none' }),
+              backgroundColor: "black"
             }}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} sx={{backgroundColor:'black'}}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -159,6 +156,7 @@ export default function MiniDrawer() {
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+
                 }}
                 onClick={onClick}
               >
@@ -167,6 +165,7 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    backgroundColor: "black"
                   }}
                 >
                   {index % 2 === 0 ? <CircleIcon /> : <CircleIcon />}
