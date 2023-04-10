@@ -3,6 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
+//Material UI import items
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function EditMovie() {
 
@@ -11,6 +18,7 @@ function EditMovie() {
     const selectedMovie = useSelector(store => store.selectedMovie);
     const dispatch = useDispatch();
     const history = useHistory()
+    console.log('This is selectedMovie', selectedMovie)
 
     //Set defaults equal to their current values.
     let [movieEdit, setMovieEdit] = useState({ title: selectedMovie?.title, description: selectedMovie?.description, id: '' })
@@ -53,36 +61,63 @@ function EditMovie() {
     }
 
     return (
-        <main>
+        <div className="flex-grid">
             {selectedMovie ? (
-                <div key={selectedMovie.id} >
-                    <h3>{selectedMovie.title}</h3>
-                    <img src={selectedMovie.poster} alt={selectedMovie.title} />
-                    <h4>Genres: {selectedMovie.genres}</h4>
-                    <p>{selectedMovie.description}</p>
-                </div>
-            ) : (<div>Loading</div>)}
-            <button onClick={back}>Back to Home</button>
-
-            <form onSubmit={(event) => editMovie(movieEdit)}>
-                <input
-                    onChange={handleInputChange}
-                    type='text'
-                    placeholder='title'
-                    name='title'
-                    value={movieEdit.title}
-                />
-                <input
-                    onChange={handleInputChange}
-                    type='text'
-                    placeholder='description'
-                    name='description'
-                    value={movieEdit.description}
-                />
-                <button type='submit'>Save</button>
-            </form>
-            <button onClick={back}>Cancel</button>
-        </main>
+                <Card key={selectedMovie.id}
+                    className='col'
+                    sx={{
+                        maxWidth: "50%",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                        cursor: 'grab',
+                        transition: 'all 0.2s ease-in-out',
+                        '&:hover': {
+                        }
+                    }}>
+                    <CardMedia
+                        sx={{ height: 350, width: 300, justifyContent: "center" }}
+                        image={selectedMovie.poster}
+                    />
+                    <CardContent sx={{ width: '100%' }}>
+                        <form onSubmit={(event) => editMovie(movieEdit)}>
+                            <Typography gutterBottom variant="h4" component="div">
+                                {selectedMovie.title}
+                            </Typography>
+                            <Typography gutterBottom variant="h6" component="div">
+                                Genres: {selectedMovie.genres}
+                            </Typography>
+                            <input
+                                onChange={handleInputChange}
+                                type='text'
+                                size="50"
+                                placeholder='title'
+                                name='title'
+                                value={movieEdit.title}
+                            /><br /><br />
+                            <textarea
+                                onChange={handleInputChange}
+                                cols="75"
+                                rows="5"
+                                type='text'
+                                placeholder='description'
+                                name='description'
+                                value={movieEdit.description}
+                            /><br /><br />
+                            <div className='btn-wrapper'>
+                                <Button size="small" variant="contained" color='error' onClick={back}>Cancel</Button>
+                                <Button size="small" variant="contained" type='submit' >Save</Button>
+                            </div>
+                        </form>
+                    </CardContent>
+                    <CardActions sx={{ justifyContent: "center" }}>
+                    </CardActions>
+                </Card>
+            ) : (<div>Loading</div>)
+            }
+        </div>
     );
 }
 
