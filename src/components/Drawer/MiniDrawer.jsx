@@ -111,11 +111,6 @@ export default function MiniDrawer() {
       text: 'Add Movie',
       icon: <CircleIcon />,
       onClick: () => history.push('/addmovie')
-    }, 
-    {
-      text: 'Edit Movie',
-      icon: <CircleIcon />,
-      onClick: () => history.push('/editmovie')
     }]
   
 
