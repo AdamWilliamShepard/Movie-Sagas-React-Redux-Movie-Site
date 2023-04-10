@@ -23,11 +23,10 @@ function EditMovie() {
     //Set defaults equal to their current values.
     let [movieEdit, setMovieEdit] = useState({ title: selectedMovie?.title, description: selectedMovie?.description, id: '' })
 
-    //useEffect to fetch movies and genres despite what page the user is on after a refresh.
+    //Use effect that takes advantage of the id created above to maintain persistance through refresh.
     useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES' });
-        dispatch({ type: 'FETCH_GENRES' })
-    }, []);
+        dispatch({ type: 'FETCH_SINGLE_MOVIE', payload: id })
+    }, [dispatch, id])
 
     //function to take the user back to home.
     const back = () => {
@@ -95,7 +94,7 @@ function EditMovie() {
                                 size="50"
                                 placeholder='title'
                                 name='title'
-                                value={movieEdit.title}
+                                value={movieEdit?.title}
                             /><br /><br />
                             <textarea
                                 onChange={handleInputChange}
@@ -104,7 +103,7 @@ function EditMovie() {
                                 type='text'
                                 placeholder='description'
                                 name='description'
-                                value={movieEdit.description}
+                                value={movieEdit?.description}
                             /><br /><br />
                             <div className='btn-wrapper'>
                                 <Button size="small" variant="contained" color='error' onClick={back}>Cancel</Button>

@@ -9,7 +9,7 @@ import MiniDrawer from '../Drawer/MiniDrawer';
 function App() {
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
+<img src="images/PrimeMovieSaga.png" width="550"/>
       <Router>
         <MiniDrawer />
 
