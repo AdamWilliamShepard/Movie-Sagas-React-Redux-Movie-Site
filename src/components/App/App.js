@@ -18,7 +18,7 @@ function App() {
 
         {/* Details page */}
         <Route path="/details/:id" component={Details} />
-
+        
         {/* Add Movie page */}
         <Route path="/addmovie" component={AddMovieForm} />
 

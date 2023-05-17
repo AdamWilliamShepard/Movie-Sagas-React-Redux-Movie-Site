@@ -21,7 +21,7 @@ function Details() {
     //Use effect that takes advantage of the id created above to maintain persistance through refresh.
     useEffect(() => {
         dispatch({ type: 'FETCH_SINGLE_MOVIE', payload: id })
-    }, [dispatch, id])
+    }, [])
 
     //function to take the user back to home.
     const back = () => {
